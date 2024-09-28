@@ -16,7 +16,7 @@ const currently_selected = ref<number>(1)
         <div class="flex flex-col min-h-screen max-h-screen p-2 w-96 pt-6 space-y-2">
             <div class="px-8">
                 <div class="my-4 flex justify-between">
-                    <h3 class="text-2xl font-bold text-gray-700">Chats</h3>
+                    <h3 class="text-2xl font-bold text-gray-700">Rozmowy</h3>
                     <NewChat class="size-8 text-gray-600"></NewChat>
                 </div>
                 <div class="relative">
