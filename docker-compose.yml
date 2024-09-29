@@ -17,6 +17,7 @@ services:
             XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
             IGNITION_LOCAL_SITES_PATH: '${PWD}'
+            TZ: 'Europe/Warsaw'
         volumes:
             - '.:/var/www/html'
         networks:
@@ -26,11 +27,7 @@ services:
             - redis
             - mailpit
             - memcached
-        command: >
-            sh -c "while [ true ]; do
-              php /var/www/html/artisan schedule:run >> /dev/null 2>&1;
-              sleep 60;
-            done"
+
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -55,6 +52,7 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
+
     redis:
         image: 'redis:alpine'
         ports:
@@ -70,6 +68,7 @@ services:
                 - ping
             retries: 3
             timeout: 5s
+
     mailpit:
         image: 'axllent/mailpit:latest'
         ports:
@@ -77,15 +76,18 @@ services:
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
         networks:
             - sail
+
     memcached:
         image: 'memcached:alpine'
         ports:
             - '${FORWARD_MEMCACHED_PORT:-11211}:11211'
         networks:
             - sail
+
 networks:
     sail:
         driver: bridge
+
 volumes:
     sail-mysql:
         driver: local
