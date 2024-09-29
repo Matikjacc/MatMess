@@ -26,6 +26,11 @@ services:
             - redis
             - mailpit
             - memcached
+        command: >
+            sh -c "while [ true ]; do
+              php /var/www/html/artisan schedule:run >> /dev/null 2>&1;
+              sleep 60;
+            done"
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
