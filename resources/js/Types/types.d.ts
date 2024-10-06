@@ -1,3 +1,10 @@
+export interface ChatMessageType {
+    message : string,
+    sent_ago : string,
+    sender : string,
+    sender_pic_url : string
+}
+
 export type ChatType = {
     chat_id : number,
     name : string,

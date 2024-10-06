@@ -2,7 +2,7 @@
 import NewChat from "../../../Components/Icons/NewChat.vue";
 import Chat from "../../../Components/Icons/Chat.vue"
 import ChatMessenger from "../../../Components/Messages/Chats/Chat/ChatMessenger.vue";
-import {ChatType} from "./types.js"
+import {ChatType} from "../../../Types/types"
 import {ChatGenerator} from './ChatGenerator'
 import { ref } from "vue";
 
@@ -29,7 +29,7 @@ const currently_selected = ref<number>(1)
                     <Chat class="text-gray-500 size-6 absolute left-2 top-1/2 -translate-y-1/2"></Chat>
                 </div>
             </div>
-            <div class="flex-1 overflow-y-auto">
+            <div class="flex flex-col overflow-y-auto">
                 <ChatMessenger
                     v-for="chat in chats"
                     @click="currently_selected = chat.chat_id"

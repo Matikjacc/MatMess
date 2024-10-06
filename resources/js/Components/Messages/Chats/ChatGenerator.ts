@@ -1,4 +1,4 @@
-import {ChatType} from "./types";
+import {ChatType} from "../../../Types/types";
 
 export function ChatGenerator(number_of_entries : number = 10) : ChatType[]{
     let chat_data: ChatType[] = []
